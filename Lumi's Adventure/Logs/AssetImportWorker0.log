@@ -1,35 +1,30 @@
-Unity Editor version:    6000.0.50f1 (f1ef1dca8bff)
-Branch:                  6000.0/staging
-Build type:              Release
-Batch mode:              YES
-macOS version:           Version 15.6.1 (Build 24G90)
-Darwin version:          24.6.0
-Architecture:            arm64
-Running under Rosetta:   NO
-Available memory:        32768 MB
 Using pre-set license
+Built from '6000.0/staging' branch; Version is '6000.0.50f1 (f1ef1dca8bff) revision 15855389'; Using compiler version '193933523'; Build Type 'Release'
+OS: 'Windows 11  (10.0.26200) 64bit Professional' Language: 'es' Physical Memory: 65277 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
+Date: 2025-11-26T18:10:57Z
 
 COMMAND LINE ARGUMENTS:
-/Applications/Unity/Hub/Editor/6000.0.50f1/Unity.app/Contents/MacOS/Unity
+D:\Unity\6000.0.50f1\Editor\Unity.exe
 -adb2
 -batchMode
 -noUpm
 -name
 AssetImportWorker0
 -projectPath
-/Users/mariannajimenez/Desktop/Lumi's Adventure
+C:/Users/La/Documents/GitHub/IDV-2024-EQUIPO-I/Lumi's Adventure
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-49772
+54362
 -job-worker-count
-5
+11
 -background-job-worker-count
 8
 -gc-helper-count
 1
-Successfully changed project path to: /Users/mariannajimenez/Desktop/Lumi's Adventure
-/Users/mariannajimenez/Desktop/Lumi's Adventure
+Successfully changed project path to: C:/Users/La/Documents/GitHub/IDV-2024-EQUIPO-I/Lumi's Adventure
+C:/Users/La/Documents/GitHub/IDV-2024-EQUIPO-I/Lumi's Adventure
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
     "memorysetup-bucket-allocator-granularity=16"
     "memorysetup-bucket-allocator-bucket-count=8"
@@ -65,13 +60,13 @@ Successfully changed project path to: /Users/mariannajimenez/Desktop/Lumi's Adve
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [8686772416]  Target information:
+Player connection [17716]  Target information:
 
-Player connection [8686772416]  * "[IP] 192.168.0.165 [Port] 0 [Flags] 2 [Guid] 3989851304 [EditorId] 3989851304 [Version] 1048832 [Id] OSXEditor(0,Mac.technicolor.net) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor" 
+Player connection [17716]  * "[IP] 192.168.1.45 [Port] 0 [Flags] 2 [Guid] 3686032205 [EditorId] 3686032205 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-17CTML3) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [8686772416] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [8686772416] Host joined alternative multi-casting on [225.0.0.222:34997]...
-JobSystem: Creating JobQueue using job-worker-count value 5
+Player connection [17716] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [17716] Host joined alternative multi-casting on [225.0.0.222:34997]...
+JobSystem: Creating JobQueue using job-worker-count value 11
 Input System module state changed to: Initialized.
 [Physics::Module] Initialized fallback backend.
 [Physics::Module] Id: 0xdecafbad
@@ -82,58 +77,61 @@ Library Redirect Path: Library/
 [Physics::Module] SDK Version: 4.1.2
 [Physics::Module] Integration Version: 1.0.0
 [Physics::Module] Threading Mode: Multi-Threaded
-Refreshing native plugins compatible for Editor in 0.51 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 2.71 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 6000.0.50f1 (f1ef1dca8bff)
-[Subsystems] Discovering subsystems at path /Applications/Unity/Hub/Editor/6000.0.50f1/Unity.app/Contents/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path /Users/mariannajimenez/Desktop/Lumi's Adventure/Assets
+[Subsystems] Discovering subsystems at path D:/Unity/6000.0.50f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/La/Documents/GitHub/IDV-2024-EQUIPO-I/Lumi's Adventure/Assets
 GfxDevice: creating device client; kGfxThreadingModeNonThreaded
- preferred device: Apple M2 Max (high power)
-Metal devices available: 1
-0: Apple M2 Max (high power)
-Using device Apple M2 Max (high power)
-Initializing Metal device caps: Apple M2 Max
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 3060 Ti (ID=0x2489)
+    Vendor:   NVIDIA
+    VRAM:     8024 MB
+    Driver:   32.0.15.6094
 Initialize mono
-Mono path[0] = '/Applications/Unity/Hub/Editor/6000.0.50f1/Unity.app/Contents/Managed'
-Mono path[1] = '/Applications/Unity/Hub/Editor/6000.0.50f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityjit-macos'
-Mono config path = '/Applications/Unity/Hub/Editor/6000.0.50f1/Unity.app/Contents/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56675
+Mono path[0] = 'D:/Unity/6000.0.50f1/Editor/Data/Managed'
+Mono path[1] = 'D:/Unity/6000.0.50f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'D:/Unity/6000.0.50f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56740
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
-Register platform support module: /Applications/Unity/Hub/Editor/6000.0.50f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
-Registered in 0.000510 seconds.
-- Loaded All Assemblies, in  0.206 seconds
-Native extension for OSXStandalone target not found
+Register platform support module: D:/Unity/6000.0.50f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: D:/Unity/6000.0.50f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.002526 seconds.
+- Loaded All Assemblies, in  0.284 seconds
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.240 seconds
-Domain Reload Profiling: 446ms
-	BeginReloadAssembly (49ms)
+- Finished resetting the current domain, in  0.242 seconds
+Domain Reload Profiling: 526ms
+	BeginReloadAssembly (98ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (0ms)
-	RebuildCommonClasses (25ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (27ms)
 	RebuildNativeTypeToScriptingClass (8ms)
-	initialDomainReloadingComplete (26ms)
-	LoadAllAssembliesAndSetupDomain (97ms)
-		LoadAssemblies (49ms)
+	initialDomainReloadingComplete (33ms)
+	LoadAllAssembliesAndSetupDomain (118ms)
+		LoadAssemblies (98ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (96ms)
-			TypeCache.Refresh (95ms)
-				TypeCache.ScanAssembly (86ms)
+		AnalyzeDomain (115ms)
+			TypeCache.Refresh (114ms)
+				TypeCache.ScanAssembly (102ms)
 			BuildScriptInfoCaches (0ms)
 			ResolveRequiredComponents (0ms)
-	FinalizeReload (240ms)
+	FinalizeReload (242ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
 		SetupLoadedEditorAssemblies (209ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (24ms)
-			SetLoadedEditorAssemblies (4ms)
-			BeforeProcessingInitializeOnLoad (51ms)
-			ProcessInitializeOnLoadAttributes (87ms)
-			ProcessInitializeOnLoadMethodAttributes (42ms)
+			InitializePlatformSupportModulesInManaged (18ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (42ms)
+			ProcessInitializeOnLoadAttributes (105ms)
+			ProcessInitializeOnLoadMethodAttributes (40ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -142,299 +140,138 @@ Domain Reload Profiling: 446ms
 Worker process is ready to serve import requests
 Import Worker Mode flag is 0x00
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  0.453 seconds
-Refreshing native plugins compatible for Editor in 0.28 ms, found 2 plugins.
-Native extension for OSXStandalone target not found
+- Loaded All Assemblies, in  0.689 seconds
+Refreshing native plugins compatible for Editor in 1.78 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.533 seconds
-Domain Reload Profiling: 985ms
-	BeginReloadAssembly (93ms)
+- Finished resetting the current domain, in  0.578 seconds
+Domain Reload Profiling: 1260ms
+	BeginReloadAssembly (139ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (3ms)
+		DisableScriptedObjects (4ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (28ms)
-	RebuildCommonClasses (28ms)
-	RebuildNativeTypeToScriptingClass (10ms)
-	initialDomainReloadingComplete (22ms)
-	LoadAllAssembliesAndSetupDomain (300ms)
-		LoadAssemblies (165ms)
+		CreateAndSetChildDomain (29ms)
+	RebuildCommonClasses (30ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (30ms)
+	LoadAllAssembliesAndSetupDomain (475ms)
+		LoadAssemblies (371ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (169ms)
+		AnalyzeDomain (178ms)
 			TypeCache.Refresh (132ms)
-				TypeCache.ScanAssembly (121ms)
-			BuildScriptInfoCaches (28ms)
+				TypeCache.ScanAssembly (120ms)
+			BuildScriptInfoCaches (35ms)
 			ResolveRequiredComponents (7ms)
-	FinalizeReload (533ms)
+	FinalizeReload (579ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (420ms)
+		SetupLoadedEditorAssemblies (419ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (2ms)
+			InitializePlatformSupportModulesInManaged (3ms)
 			SetLoadedEditorAssemblies (4ms)
-			BeforeProcessingInitializeOnLoad (111ms)
-			ProcessInitializeOnLoadAttributes (269ms)
-			ProcessInitializeOnLoadMethodAttributes (33ms)
+			BeforeProcessingInitializeOnLoad (103ms)
+			ProcessInitializeOnLoadAttributes (271ms)
+			ProcessInitializeOnLoadMethodAttributes (37ms)
 			AfterProcessingInitializeOnLoad (1ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (2ms)
-WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
-WARNING: Shader Did you use #pragma only_renderers and omit this platform?
-WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
-WARNING: Shader Unsupported: 'Universal Render Pipeline/VR/SpatialMapping/Wireframe' - All subshaders removed
-WARNING: Shader Did you use #pragma only_renderers and omit this platform?
-WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
-Launching external process: /Applications/Unity/Hub/Editor/6000.0.50f1/Unity.app/Contents/Tools/UnityShaderCompiler
-Launched and connected shader compiler UnityShaderCompiler after 0.03 seconds
-Refreshing native plugins compatible for Editor in 0.30 ms, found 2 plugins.
+		AwakeInstancesAfterBackupRestoration (5ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.01 seconds
+Refreshing native plugins compatible for Editor in 2.14 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 198 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6072 unused Assets / (3.5 MB). Loaded Objects now: 6757.
-Memory consumption went from 166.6 MB to 163.0 MB.
-Total: 5.374708 ms (FindLiveObjects: 0.341750 ms CreateObjectMapping: 0.227125 ms MarkObjects: 3.718792 ms  DeleteObjects: 1.086666 ms)
+Unloading 6074 unused Assets / (4.9 MB). Loaded Objects now: 6762.
+Memory consumption went from 162.6 MB to 157.7 MB.
+Total: 7.582700 ms (FindLiveObjects: 0.762100 ms CreateObjectMapping: 0.669800 ms MarkObjects: 3.810600 ms  DeleteObjects: 2.339500 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 4676.606419 seconds.
-  path: Assets/Environment/Forest Pack
-  artifactKey: Guid(be587e4e6b2344d5ea5bfe30a143e678) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Environment/Forest Pack using Guid(be587e4e6b2344d5ea5bfe30a143e678) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '761611df4fae80b6c22f0b98dacc9f8f') in 0.002008792 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 48.841016 seconds.
-  path: Assets/Environment/Forest Pack/Materials
-  artifactKey: Guid(6df02d54fcb636b47b0c74dc25bf6a81) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Environment/Forest Pack/Materials using Guid(6df02d54fcb636b47b0c74dc25bf6a81) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '404c752a8385782adcd6da4c6b927b53') in 0.00030525 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.064952 seconds.
-  path: Assets/Environment/Forest Pack/Materials/Color001.mat
-  artifactKey: Guid(1d23e744b68e6934c853223db643efb1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Environment/Forest Pack/Materials/Color001.mat using Guid(1d23e744b68e6934c853223db643efb1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '2154f03ef1ff0f75cdd9e2731fa4dc8f') in 0.351152958 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000045 seconds.
-  path: Assets/Environment/Forest Pack/Materials/Color0017.mat
-  artifactKey: Guid(76d3147ed77324d4d80bc2e5c5801bdd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Environment/Forest Pack/Materials/Color0017.mat using Guid(76d3147ed77324d4d80bc2e5c5801bdd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'd69fd33276a8c9d8dcb584f3750a9e3d') in 0.005921833 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000037 seconds.
-  path: Assets/Environment/Forest Pack/Materials/Color0018.mat
-  artifactKey: Guid(1bfd67c9482620a4b821fa4b6bfecc2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Environment/Forest Pack/Materials/Color0018.mat using Guid(1bfd67c9482620a4b821fa4b6bfecc2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'a1f7dc1821eebe7b02683cb0a47b7106') in 0.00534125 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000032 seconds.
-  path: Assets/Environment/Forest Pack/Materials/Color009.mat
-  artifactKey: Guid(2f7ac34b80241f4408cda3b5c4173a84) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Environment/Forest Pack/Materials/Color009.mat using Guid(2f7ac34b80241f4408cda3b5c4173a84) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'fd0d8918472f1a3651a097ef2e7f3b1a') in 0.00599625 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000041 seconds.
-  path: Assets/Environment/Forest Pack/Materials/Color0027.mat
-  artifactKey: Guid(ac73f5664f4b24140857359555ac8db5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Environment/Forest Pack/Materials/Color0027.mat using Guid(ac73f5664f4b24140857359555ac8db5) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '32d28279479c3ae868140ec93d4c5110') in 0.005328292 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000058 seconds.
-  path: Assets/Environment/Forest Pack/Materials/Color0032.mat
-  artifactKey: Guid(2d419522b0487f244911cdc34850b463) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Environment/Forest Pack/Materials/Color0032.mat using Guid(2d419522b0487f244911cdc34850b463) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'dbd785d6b2b441bc0a06434ded93017a') in 0.007371583 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000055 seconds.
-  path: Assets/Environment/Forest Pack/Materials/Color0011.mat
-  artifactKey: Guid(ddef6e679f543584b80109eabf321fff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Environment/Forest Pack/Materials/Color0011.mat using Guid(ddef6e679f543584b80109eabf321fff) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'ab158299bb8da0aca5d890006113c42c') in 0.004710916 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000043 seconds.
-  path: Assets/Environment/Forest Pack/Materials/Color004.mat
-  artifactKey: Guid(3c7ced0c21e9b4948af42ef646958656) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Environment/Forest Pack/Materials/Color004.mat using Guid(3c7ced0c21e9b4948af42ef646958656) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b9a07c2edf1eebc29a08c3b131b8658b') in 0.092692125 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000038 seconds.
-  path: Assets/Environment/Forest Pack/Materials/Color006.mat
-  artifactKey: Guid(6002c77b6822fa54f8595475d51e1e09) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Environment/Forest Pack/Materials/Color006.mat using Guid(6002c77b6822fa54f8595475d51e1e09) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'fcbe50c449329c4402b1956fb38f66ca') in 0.004328334 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000029 seconds.
-  path: Assets/Environment/Forest Pack/Materials/Color0019.mat
-  artifactKey: Guid(e939e647dcf0e014b945ca217acafa3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Environment/Forest Pack/Materials/Color0019.mat using Guid(e939e647dcf0e014b945ca217acafa3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '4587a54bbee6415835b6e022f381d3d0') in 0.004500625 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000034 seconds.
-  path: Assets/Environment/Forest Pack/Materials/Color0010.mat
-  artifactKey: Guid(73bc459e1b9e4e540b495a8c28f9dc1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Environment/Forest Pack/Materials/Color0010.mat using Guid(73bc459e1b9e4e540b495a8c28f9dc1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'e7e666f0f68f298c3791ae85a88e35ec') in 0.00462275 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000050 seconds.
-  path: Assets/Environment/Forest Pack/Materials/Color0014.mat
-  artifactKey: Guid(4987c68c07a94f04897a5fae608cbe22) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Environment/Forest Pack/Materials/Color0014.mat using Guid(4987c68c07a94f04897a5fae608cbe22) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '7160b47748dc74e2c134c713e663a144') in 0.004762459 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000043 seconds.
-  path: Assets/Environment/Forest Pack/Materials/Color0031.mat
-  artifactKey: Guid(6fe120bdb445a3c4a9e5c55fe437ea82) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Environment/Forest Pack/Materials/Color0031.mat using Guid(6fe120bdb445a3c4a9e5c55fe437ea82) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '0c7e28a92060a725901b8e190d967b6a') in 0.004779291 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000044 seconds.
-  path: Assets/Environment/Forest Pack/Materials/Color0028.mat
-  artifactKey: Guid(c0477bbd7e9ccd041bc750753b1339bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Environment/Forest Pack/Materials/Color0028.mat using Guid(c0477bbd7e9ccd041bc750753b1339bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '03c4732cf929f2eb34448d18a2e10a0d') in 0.004422333 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 5.428105 seconds.
-  path: Assets/Environment/Forest Pack/Models/Ground/Mountain.fbx
-  artifactKey: Guid(76a169d7c4f213345b18708c066a9897) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Environment/Forest Pack/Models/Ground/Mountain.fbx using Guid(76a169d7c4f213345b18708c066a9897) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'c86292da19b4f08c9b4a5ee17fc0a600') in 2.227181875 seconds
+  Time since last request: 598174.394903 seconds.
+  path: Assets/Prefabs/Characters/Enemy.prefab
+  artifactKey: Guid(5c1884856b17f194c981ce027b72c144) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Characters/Enemy.prefab using Guid(5c1884856b17f194c981ce027b72c144) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '95628046cf1cc684a9544225cbd00976') in 0.3607598 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
 
 ========================================================================
 Received Import Request.
-  Time since last request: 1.578024 seconds.
-  path: Assets/Environment/Forest Pack/Models/Ground/Islands/Island002.fbx
-  artifactKey: Guid(05b18ec8198b28e49b1d1686110c040c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Environment/Forest Pack/Models/Ground/Islands/Island002.fbx using Guid(05b18ec8198b28e49b1d1686110c040c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '51d1b74195c53ccf55802c93b417ce58') in 0.015720041 seconds
+  Time since last request: 25.210683 seconds.
+  path: Assets/Prefabs/Collectibles/Corazon.prefab
+  artifactKey: Guid(8c55dab5f10a84748820fcb749a9af7d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Collectibles/Corazon.prefab using Guid(8c55dab5f10a84748820fcb749a9af7d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'e363a13f5c888ac5377694fb2676aaf9') in 0.0130292 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 9
 
 ========================================================================
 Received Import Request.
-  Time since last request: 53.765718 seconds.
-  path: Assets/Environment/SimpleNaturePack/Models/Bush_01.fbx
-  artifactKey: Guid(d8ea93d2d4757e444a5349f4bc849128) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Environment/SimpleNaturePack/Models/Bush_01.fbx using Guid(d8ea93d2d4757e444a5349f4bc849128) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'e63a26cfbf1071c3c69719d31d0456ad') in 0.01675425 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 15
+  Time since last request: 0.000020 seconds.
+  path: Assets/Prefabs/Collectibles/MaterialCorazon.mat
+  artifactKey: Guid(29da252089672b14882e31cc6b1ec982) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Collectibles/MaterialCorazon.mat using Guid(29da252089672b14882e31cc6b1ec982) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '7fdcc881e35ccf89757b91f8ccc47c7c') in 0.0208423 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.661 seconds
+Refreshing native plugins compatible for Editor in 1.82 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.558 seconds
+Domain Reload Profiling: 1215ms
+	BeginReloadAssembly (187ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (14ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (50ms)
+	RebuildCommonClasses (27ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (23ms)
+	LoadAllAssembliesAndSetupDomain (410ms)
+		LoadAssemblies (360ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (122ms)
+			TypeCache.Refresh (7ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (104ms)
+			ResolveRequiredComponents (8ms)
+	FinalizeReload (559ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (433ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (2ms)
+			SetLoadedEditorAssemblies (4ms)
+			BeforeProcessingInitializeOnLoad (105ms)
+			ProcessInitializeOnLoadAttributes (280ms)
+			ProcessInitializeOnLoadMethodAttributes (41ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (14ms)
+Refreshing native plugins compatible for Editor in 2.73 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 23 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6071 unused Assets / (4.5 MB). Loaded Objects now: 6846.
+Memory consumption went from 159.8 MB to 155.3 MB.
+Total: 7.559000 ms (FindLiveObjects: 0.650000 ms CreateObjectMapping: 0.497700 ms MarkObjects: 4.070100 ms  DeleteObjects: 2.339500 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 329.908589 seconds.
+  path: Assets/Prefabs/Characters/Enemy.mat
+  artifactKey: Guid(11d9e9700a1d2d54f911be83fbf6588c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Characters/Enemy.mat using Guid(11d9e9700a1d2d54f911be83fbf6588c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '6aa7bfb31a8edfc14800e265e82c68a6') in 0.3336456 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000039 seconds.
-  path: Assets/Environment/SimpleNaturePack/Models/Rock_03.fbx
-  artifactKey: Guid(14125b656fb71fd4d9d65bfe344107ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Environment/SimpleNaturePack/Models/Rock_03.fbx using Guid(14125b656fb71fd4d9d65bfe344107ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '6e37789d2611a1f19417061a3162d2a2') in 0.008195041 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 7
+  Time since last request: 5.475884 seconds.
+  path: Assets/Scenes/Game.unity
+  artifactKey: Guid(021e2c7e66af84c77af799b375ff974d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Game.unity using Guid(021e2c7e66af84c77af799b375ff974d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '249824ef52f77aa92d48c9a42f1933e1') in 0.0007649 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000057 seconds.
-  path: Assets/Environment/SimpleNaturePack/Models/Tree_04.fbx
-  artifactKey: Guid(83e8d2542718a2e49a73d71c3a5fc685) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Environment/SimpleNaturePack/Models/Tree_04.fbx using Guid(83e8d2542718a2e49a73d71c3a5fc685) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '2e8d72f31bf2a193d66882e0d4f7efc0') in 0.015212625 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 15
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000043 seconds.
-  path: Assets/Environment/SimpleNaturePack/Models/Rock_05.fbx
-  artifactKey: Guid(fa2e670bb3648a84b9df8d16da25b85e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Environment/SimpleNaturePack/Models/Rock_05.fbx using Guid(fa2e670bb3648a84b9df8d16da25b85e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '4d12da0da8b2ed7165706feb918c70f6') in 0.006814834 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 7
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000051 seconds.
-  path: Assets/Environment/SimpleNaturePack/Models/Ground_02.fbx
-  artifactKey: Guid(57d3eed6d2253d24994d5ad37e00aedc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Environment/SimpleNaturePack/Models/Ground_02.fbx using Guid(57d3eed6d2253d24994d5ad37e00aedc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'c354c5766e5f6dcab750af15db4c6540') in 0.007627708 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 7
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000043 seconds.
-  path: Assets/Environment/SimpleNaturePack/Models/Bush_03.fbx
-  artifactKey: Guid(7b5a098d913a3c74692a2a9963dbd3ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Environment/SimpleNaturePack/Models/Bush_03.fbx using Guid(7b5a098d913a3c74692a2a9963dbd3ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '73d5dabf215aa59fe217df0b91cf4a7b') in 0.01664525 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 15
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000046 seconds.
-  path: Assets/Environment/SimpleNaturePack/Models/Ground_03.fbx
-  artifactKey: Guid(661464e19c087564badb2bf5230c842c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Environment/SimpleNaturePack/Models/Ground_03.fbx using Guid(661464e19c087564badb2bf5230c842c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'ba005c3d978a1ddc4caf7b6e85809646') in 0.008571625 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 7
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000069 seconds.
-  path: Assets/Environment/SimpleNaturePack/Models/Tree_03.fbx
-  artifactKey: Guid(69f0af3a0a6c73b4ab4b89eb82cdc488) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Environment/SimpleNaturePack/Models/Tree_03.fbx using Guid(69f0af3a0a6c73b4ab4b89eb82cdc488) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '1dd37c0428b8bb8c30373790f55e9c4b') in 0.041175042 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 15
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000062 seconds.
-  path: Assets/Environment/SimpleNaturePack/Models/Grass_02.fbx
-  artifactKey: Guid(638dc165572d2a84081d13ce1afb4d52) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Environment/SimpleNaturePack/Models/Grass_02.fbx using Guid(638dc165572d2a84081d13ce1afb4d52) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'fcdb9324b4c84855c4b94aa1041a2083') in 0.015738458 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 15
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000041 seconds.
-  path: Assets/Environment/SimpleNaturePack/Models/Ground_01.fbx
-  artifactKey: Guid(d4ad967689295ba4eaf8baeaebc8721b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Environment/SimpleNaturePack/Models/Ground_01.fbx using Guid(d4ad967689295ba4eaf8baeaebc8721b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '3544b330954f5ceea5b34dc586cf8407') in 0.006607 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 7
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000046 seconds.
-  path: Assets/Environment/SimpleNaturePack/Models/Bush_02.fbx
-  artifactKey: Guid(ba52853a69186a841a52a9cc2e9b77fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Environment/SimpleNaturePack/Models/Bush_02.fbx using Guid(ba52853a69186a841a52a9cc2e9b77fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '1de495415078cbaa7471d3d811f8bf4a') in 0.014787333 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 15
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000040 seconds.
-  path: Assets/Environment/SimpleNaturePack/Models/Grass_01.fbx
-  artifactKey: Guid(ad3119cbd6dce024e8460ef32dec49df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Environment/SimpleNaturePack/Models/Grass_01.fbx using Guid(ad3119cbd6dce024e8460ef32dec49df) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'f4aab93bcb319bba89be837eeb708d21') in 0.01446175 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 15
-
-Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
-AssetImportWorkerClient::OnTransportError - code=2 error=End of file
-AssetImportWorker is now disconnected from the server
-Process exiting
