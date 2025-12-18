@@ -17,7 +17,7 @@ public class GameState : IMenuState
         if (panel != null) panel.SetActive(true);
         
         SceneManager.LoadScene("Game");
-        // Aquí podrías iniciar el tiempo del juego, habilitar controles del jugador, etc.
+ 
         Time.timeScale = 1; 
     }
 
@@ -27,7 +27,7 @@ public class GameState : IMenuState
         GameObject panel = menu.GetPanel("GameHUD");
         if (panel != null) panel.SetActive(false);
         
-        // Pausar juego al salir de este estado, por ejemplo
+
         Time.timeScale = 0;
     }
 
