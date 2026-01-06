@@ -2,21 +2,20 @@ using UnityEngine;
 
 public class PauseState : AMenuState
 {
-
+    private readonly GameObject panel;
     public PauseState(IMenu menu) : base(menu)
     {
         this.menu = menu;
+        panel = menu.GetPanel("PauseState");
     }
 
     public override void Enter()
     {
-        GameObject panel = menu.GetPanel("PauseMenuState");
         if (panel != null) panel.SetActive(true);
     }
 
     public override void Exit()
     {
-        GameObject panel = menu.GetPanel("PauseMenuState");
         if (panel != null)
         {
             panel.SetActive(false);
@@ -27,7 +26,6 @@ public class PauseState : AMenuState
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Exit();
             menu.SetState(new GameState(menu));
         }
     }

@@ -7,19 +7,17 @@ public class GameState : AMenuState
     public GameState(IMenu menu): base(menu)
     {
         this.menu = menu; 
-        panel = menu.GetPanel("CreditsMenuState");
+        panel = menu.GetPanel("GameState");
     }
 
     public override void Enter()
     {
-        GameObject panel = menu.GetPanel("GameState");
         if (panel != null) panel.SetActive(true);
         Time.timeScale = 1; 
     }
 
     public override void Exit()
     {
-        GameObject panel = menu.GetPanel("GameState");
         if (panel != null) panel.SetActive(false);
         Time.timeScale = 0;
     }
@@ -28,6 +26,7 @@ public class GameState : AMenuState
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+             menu.SetState(new PauseState(menu));
         }
     }
 
