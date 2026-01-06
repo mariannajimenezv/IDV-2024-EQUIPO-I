@@ -6,25 +6,30 @@ public class Collectible : MonoBehaviour
     public Type objectType;
 
     [Header("Solo para Corazones")]
-    public int healAmount = 20;
+    public int healAmount = 2;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            if (objectType == Type.Fragment)
+            LumiController lumi = other.GetComponent<LumiController>();
+
+            if (lumi != null)
             {
-                GameManager.Instance.CollectFragment();
-                Destroy(gameObject);
-            }
-            else if (objectType == Type.Heart)
-            {
-                other.GetComponent<LumiController>().Heal(healAmount);
-                Destroy(gameObject);
-            }
-            else if (objectType == Type.Exit)
-            {
-                GameManager.Instance.WinLevel();
+                if (objectType == Type.Fragment)
+                {
+                    lumi.CollectFragment();
+                    Destroy(gameObject);
+                }
+                else if (objectType == Type.Heart)
+                {
+                    lumi.Heal(healAmount);
+                    Destroy(gameObject);
+                }
+                else if (objectType == Type.Exit)
+                {
+                    GameManager.Instance.WinLevel();
+                }
             }
         }
     }

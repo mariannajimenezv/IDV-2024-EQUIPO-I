@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class LumiController : MonoBehaviour
 {
@@ -14,8 +15,15 @@ public class LumiController : MonoBehaviour
     private bool isGrounded;
     private float currentSpeed;
 
+    [Header("Estado del juego")]
+    public int lives = 10;
+    public int fragments = 0;
+
+    // Guardamos los suscriptores 
+    private List<ILumiObserver> observers = new List<ILumiObserver>();
+
     [Header("Combate y Vida")]
-    public int maxHealth = 100;
+    public int maxHealth = 10;
     public int currentHealth;
     public Transform attackPoint; 
     public float attackRange = 1.5f;
@@ -33,6 +41,8 @@ public class LumiController : MonoBehaviour
 
         moonGuideLine = GetComponent<LineRenderer>();
         if (moonGuideLine) moonGuideLine.enabled = false;
+
+        NotifyObservers("life", currentHealth);     // Notificamos a los observers el estado inicial
     }
 
     void Update()
@@ -103,14 +113,16 @@ public class LumiController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (isInvincible) return; // si invencible, no daño
+        if (isInvincible) return; // si invencible, no da?o
 
         currentHealth -= damage;
         Debug.Log("Vida actual: " + currentHealth);
 
+        NotifyObservers("Life", currentHealth);     // Notificamos a los observadores del da?o recibido
+
         if (currentHealth <= 0)
         {
-            GameManager.Instance.GameOver();
+            GameManager.Instance.GameOver(); 
         }
     }
 
@@ -118,7 +130,23 @@ public class LumiController : MonoBehaviour
     {
         currentHealth += amount;
         if (currentHealth > maxHealth) currentHealth = maxHealth;
+
+        NotifyObservers("Life", currentHealth);     // Notificamos a los observadores si nos curamos
     }
+
+    public void CollectFragment()
+    {
+        fragments++;
+        NotifyObservers("Fragment", fragments);     // Notificamos a los observadores de los fragmentos recogidos
+
+    }
+
+    public void CollectPowerUp(string type)
+    {
+        NotifyObservers("PowerUp", 0, type);     // Notificamos a los observadores del power up recogido
+        if (type == "Star") StartCoroutine(ActivateInvincibility(5f));
+    }
+
 
     // invencibilidad (estrella)
     public IEnumerator ActivateInvincibility(float duration)
@@ -126,9 +154,33 @@ public class LumiController : MonoBehaviour
         isInvincible = true;
         Debug.Log("Lumi: estado invencible");
         
-        // activar efecto visual aquí
+        // activar efecto visual aqu?
         yield return new WaitForSeconds(duration);
         isInvincible = false;
         Debug.Log("Lumi: fin invencibilidad");
+    }
+
+    // _-. PATRON OBSERVER .-_ \\
+    public void AddObserver(ILumiObserver observer)
+    {
+        if (!observers.Contains(observer))
+            observers.Add(observer);
+    }
+
+    public void RemoveObserver(ILumiObserver observer)
+    {
+        if (observers.Contains(observer))
+            observers.Remove(observer);
+    }
+
+    public void NotifyObservers(string eventType, int value = 0, string msg = "")
+    {
+        foreach(ILumiObserver observer in observers)
+        {
+            if (eventType == "Life") observer.OnLifeChange(value);
+            if (eventType == "Fragment") observer.OnFragmentCount(value);
+            if (eventType == "PowerUp") observer.OnPowerUp(msg);
+
+        }
     }
 }

@@ -1,9 +1,12 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, ILumiObserver
 {
-    public static GameManager Instance; 
+    public static GameManager Instance;
+
+    [Header("Referencias Patron Observer")]
+    public LumiController lumi;
 
     [Header("Configuracion del Nivel")]
     public int totalFragments = 10;
@@ -12,7 +15,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null) Instance = this;
+        if (Instance == null) Instance = this; //singleton
         else Destroy(gameObject);
     }
 
@@ -20,24 +23,54 @@ public class GameManager : MonoBehaviour
     {
         // inicio salida bloqueada
         if (exitDoor != null) exitDoor.SetActive(false);
+
+        if(lumi != null)
+        {
+            lumi.AddObserver(this);
+        }
+        else
+        {
+            Debug.LogError("GameManager: ¡Falta asignar a Lumi en el Inspector!");
+        }
     }
 
-    public void CollectFragment()
+    private void OnDestroy()
     {
-        currentFragments++;
-        Debug.Log($"Fragmentos: {currentFragments}/{totalFragments}");
+        if (lumi != null) lumi.RemoveObserver(this);
+    }
 
+    public void OnFragmentCount(int value)
+    {
+        currentFragments = value;
+        Debug.Log($"[OBSERVER] Fragmentos: {currentFragments}/{totalFragments}");
+
+        // logica de victoria
         if (currentFragments >= totalFragments)
         {
             UnlockExit();
         }
     }
 
+    public void OnLifeChange(int value)
+    {
+        Debug.Log("[OBSERVER] Vida restante:" + value);
+
+        if(value <= 0)
+        {
+            GameOver();
+        }
+    }
+
+    public void OnPowerUp(string value)
+    {
+        Debug.Log("[OBSERVER] PowerUp activado" + value);
+    }
+
     void UnlockExit()
     {
         Debug.Log("SALIDA DESBLOQUEADA!!");
         if (exitDoor != null) exitDoor.SetActive(true);
-        // maybe sonidito de completar nivel 
+        // maybe sonidito de completar nivel
     }
 
     public void GameOver()
