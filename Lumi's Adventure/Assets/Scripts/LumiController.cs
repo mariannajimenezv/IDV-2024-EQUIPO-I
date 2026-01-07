@@ -34,40 +34,32 @@ public class LumiController : MonoBehaviour
 
     private LineRenderer moonGuideLine;
 
+    private void Awake()
+    {
+        // Esto conecta la variable 'rb' con el componente real del objeto
+        rb = GetComponent<Rigidbody>();
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         currentHealth = maxHealth;
 
+        currentSpeed = walkSpeed;
+
         moonGuideLine = GetComponent<LineRenderer>();
         if (moonGuideLine) moonGuideLine.enabled = false;
 
-        NotifyObservers("life", currentHealth);     // Notificamos a los observers el estado inicial
+        NotifyObservers("life", currentHealth);     // notifica a los observers el estado inicial
     }
 
     void Update()
     {
-        Move();
-        Jump();
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            Attack();
-        }
+        NotifyObservers("life", currentHealth);     // notifica a los observers el estado inicial
     }
 
-    void Move()
-    {
-        float moveX = Input.GetAxisRaw("Horizontal"); 
-        float moveZ = Input.GetAxisRaw("Vertical");  
-
-        if (Input.GetKey(KeyCode.LeftShift))
-            currentSpeed = runSpeed;
-        else
-            currentSpeed = walkSpeed;
-
-        Vector3 direction = new Vector3(moveX, 0f, moveZ).normalized;
-
+    public void Move(Vector3 direction)
+    { 
         if (direction.magnitude >= 0.1f)
         {
             // mover personaje
@@ -82,18 +74,18 @@ public class LumiController : MonoBehaviour
         }
     }
 
-    void Jump()
+    public void Jump()
     {
         // detectar suelo
         isGrounded = Physics.CheckSphere(groundCheck.position, 0.2f, groundLayer);
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (isGrounded)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
     }
 
-    void Attack()
+    public void Attack()
     {
         Debug.Log("Lumi Ataca");
         // animaciones para luego:
