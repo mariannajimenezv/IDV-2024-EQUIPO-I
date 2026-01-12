@@ -82,6 +82,8 @@ public class LumiController : MonoBehaviour
         if (isGrounded)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            #region Service Locator
+            #endregion
         }
     }
 
@@ -97,6 +99,8 @@ public class LumiController : MonoBehaviour
         foreach (Collider enemy in hitEnemies)
         {
             if (enemy.gameObject == gameObject) continue;
+            #region Service Locator
+            #endregion
 
             Debug.Log("lumi golpea a: " + enemy.name);
             Destroy(enemy.gameObject); // luego enemy.TakeDamage() para que tengan vida y baje y tal
@@ -130,7 +134,8 @@ public class LumiController : MonoBehaviour
     {
         fragments++;
         NotifyObservers("Fragment", fragments);     // Notificamos a los observadores de los fragmentos recogidos
-
+        #region Service Locator
+        #endregion
     }
 
     public void CollectPowerUp(string type)
