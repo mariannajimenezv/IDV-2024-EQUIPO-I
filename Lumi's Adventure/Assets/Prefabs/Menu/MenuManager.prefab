@@ -4641,6 +4641,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1535462585802908128}
   - component: {fileID: 3164395112742258599}
+  - component: {fileID: 2572916036577731123}
   m_Layer: 0
   m_Name: MenuManager
   m_TagString: Untagged
@@ -4683,6 +4684,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 162b53f6f7cbc0d448ffe68069d1891e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2572916036577731123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3428816504746291356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05da7adbc9c534d4793c65bd0e8779c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 0}
+  resolutionDropDown: {fileID: 0}
+  brightnessFilter: {fileID: 0}
+  volumeSlider: {fileID: 0}
+  brightnessSlider: {fileID: 0}
 --- !u!1 &3460452085635162537
 GameObject:
   m_ObjectHideFlags: 0
@@ -5395,7 +5413,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4740574826509382537}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
         m_MethodName: SetBrightness
         m_Mode: 0
@@ -5531,8 +5549,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 819231727e7c6924ca02e8e36cde0f14, type: 2}
   resolutionDropDown: {fileID: 3251434526990481588}
-  globalLight: {fileID: 0}
   brightnessFilter: {fileID: 1613546444294160821}
+  volumeSlider: {fileID: 806761018145657605}
+  brightnessSlider: {fileID: 8534735089450480525}
 --- !u!1 &3912755731199155616
 GameObject:
   m_ObjectHideFlags: 0
@@ -5895,7 +5914,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4740574826509382537}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
         m_MethodName: SetResolution
         m_Mode: 0
@@ -7507,7 +7526,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4740574826509382537}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
         m_MethodName: SetQuality
         m_Mode: 0
@@ -7755,7 +7774,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4740574826509382537}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
         m_MethodName: SetFullScreen
         m_Mode: 0
@@ -7859,7 +7878,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4740574826509382537}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
         m_MethodName: SetVolume
         m_Mode: 0
@@ -12714,7 +12733,6 @@ GameObject:
   - component: {fileID: 8120869837346746100}
   - component: {fileID: 2512332479413926193}
   - component: {fileID: 2917939595059579503}
-  - component: {fileID: 4740574826509382537}
   m_Layer: 5
   m_Name: PauseState
   m_TagString: Untagged
@@ -12814,22 +12832,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &4740574826509382537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9076300389406703048}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05da7adbc9c534d4793c65bd0e8779c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioMixer: {fileID: 24100000, guid: 819231727e7c6924ca02e8e36cde0f14, type: 2}
-  resolutionDropDown: {fileID: 3850495419596883885}
-  globalLight: {fileID: 0}
-  brightnessFilter: {fileID: 1613546444294160821}
 --- !u!1 &9149572678654371852
 GameObject:
   m_ObjectHideFlags: 0

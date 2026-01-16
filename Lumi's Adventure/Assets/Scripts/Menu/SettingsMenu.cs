@@ -8,13 +8,20 @@ public class SettingsMenu : MonoBehaviour
 {
     public AudioMixer audioMixer;
     public TMP_Dropdown resolutionDropDown;
-    public Light globalLight;
-
     public Image brightnessFilter;
+
+    public Slider volumeSlider;
+    public Slider brightnessSlider;
 
     Resolution[] resolutions;
 
     void Start()
+    {
+        if(resolutionDropDown != null) LoadResolutions(); 
+        LoadSettings();
+    } 
+
+    public void LoadResolutions()
     {
         resolutions = Screen.resolutions;
         resolutionDropDown.ClearOptions();
@@ -36,9 +43,20 @@ public class SettingsMenu : MonoBehaviour
         resolutionDropDown.AddOptions(options);
         resolutionDropDown.value = currentResolutionIndex;
         resolutionDropDown.RefreshShownValue();
+    }
 
-        globalLight = FindAnyObjectByType<Light>();
-    } 
+    private void LoadSettings()
+    {
+        float savedVolume = PlayerPrefs.GetFloat("volume", 0);
+        if (audioMixer != null) audioMixer.SetFloat("volume", savedVolume);
+        
+        // Sincronizar el slider visualmente si estamos en la escena de menú
+        if (volumeSlider != null) volumeSlider.value = savedVolume;
+
+        // Cargar y Aplicar Brillo
+        float savedBrightness = PlayerPrefs.GetFloat("brightness", 1f);
+        SetBrightness(savedBrightness);
+    }
 
     // UI interactables
     public void SetResolution (int resolutionIndex)
@@ -49,7 +67,8 @@ public class SettingsMenu : MonoBehaviour
     
     public void SetVolume(float volume)
     {
-        audioMixer.SetFloat("volume", volume);
+        PlayerPrefs.SetFloat("volume", volume); // Persistencia
+        if (audioMixer != null) audioMixer.SetFloat("volume", volume);
     }
 
     public void SetQuality(int qualityIndex)
@@ -64,8 +83,13 @@ public class SettingsMenu : MonoBehaviour
 
     public void SetBrightness(float brightness)
     {
-        Color c = brightnessFilter.color;
-        c.a = 1 - brightness;
-        brightnessFilter.color = c;
+        PlayerPrefs.SetFloat("brightness", brightness);
+        if(brightnessFilter != null)
+        {
+            Color c = brightnessFilter.color;
+            c.a = 1 - brightness;
+            brightnessFilter.color = c;
+            PlayerPrefs.SetFloat("brightness", brightness);
+        }
     }
 }
