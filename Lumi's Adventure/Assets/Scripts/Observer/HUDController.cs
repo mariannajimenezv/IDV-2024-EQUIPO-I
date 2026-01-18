@@ -10,7 +10,11 @@ public class HUDController : MonoBehaviour, ILumiObserver
     [Header("UI Elements")]
     public TMP_Text livesText;      
     public TMP_Text fragmentsText;  
-    public TMP_Text powerUpMsg;     
+    public TMP_Text powerUpMsg;    
+
+    [Header("UI Elements")]
+    public Image lifeBar;    
+    public Sprite[] lifeBarSprites;
 
     void Start()
     {
@@ -31,8 +35,15 @@ public class HUDController : MonoBehaviour, ILumiObserver
 
     public void OnLifeChange(int value)
     {
+        // Debug
         if (livesText != null)
             livesText.text = "Vidas: " + value;
+        
+        // Health Bar Animation
+        int spriteIndex = Mathf.CeilToInt((10 - value) / 2f);
+        // Clamp to avoid going out of bounds
+        spriteIndex = Mathf.Clamp(spriteIndex, 0, lifeBarSprites.Length - 1);
+        lifeBar.sprite = lifeBarSprites[spriteIndex];
     }
 
     public void OnFragmentCount(int value)
