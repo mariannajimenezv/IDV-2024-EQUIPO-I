@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour, ILumiObserver
         }
 
         StartLevel();
+        ServiceLocator.Get<IAudioService>().PlaySound("Game");
     }
 
     private void StartLevel()
@@ -100,12 +101,14 @@ public class GameManager : MonoBehaviour, ILumiObserver
     {
         Debug.Log("SALIDA DESBLOQUEADA!!");
         if (exitDoor != null) exitDoor.SetActive(true);
-        // maybe sonidito de completar nivel
     }
 
     public void GameOver()
     {
         Debug.Log("GAME OVER");
+
+        ServiceLocator.Get<IAudioService>().PlaySound("GameOver");
+
         if (MenuManager.Instance != null)
         {
             MenuManager.Instance.SetState(new GameOverState(MenuManager.Instance));
@@ -115,7 +118,9 @@ public class GameManager : MonoBehaviour, ILumiObserver
     public void WinLevel()
     {
         Debug.Log("NIVEL COMPLETADO!!");
-        // siguiente nivel (en la entrega pone que con uno vale)
+
+        ServiceLocator.Get<IAudioService>().PlaySound("Victory");
+
         if (MenuManager.Instance != null)
         {
             MenuManager.Instance.SetState(new VictoryState(MenuManager.Instance));

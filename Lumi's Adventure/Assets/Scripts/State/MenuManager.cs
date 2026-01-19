@@ -32,6 +32,12 @@ public class MenuManager : MonoBehaviour, IMenu
     {
         if(SceneManager.GetActiveScene().name == "Menu")
         {
+            IAudioService audioService = ServiceLocator.Get<IAudioService>();
+            if (audioService != null)
+            {
+                audioService.PlaySound("Menu");
+            }
+
             SetState(new MainMenuState(this));
         }
         else
@@ -65,9 +71,21 @@ public class MenuManager : MonoBehaviour, IMenu
         return panel;
     }
 
+    private void Update()
+    {
+        if (currentState != null)
+        {
+            currentState.Update();
+        }
+    }
 
-    private void Update() => currentState?.Update();
-    private void FixedUpdate() => currentState.FixedUpdate();
+    private void FixedUpdate()
+    {
+        if (currentState != null)
+        {
+            currentState.FixedUpdate();
+        }
+    }
 
     // UI 
     // Se delega la accion a los estados y GameManager actúa como

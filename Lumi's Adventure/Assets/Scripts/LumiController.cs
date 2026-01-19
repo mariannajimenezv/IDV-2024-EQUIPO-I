@@ -149,8 +149,8 @@ public class LumiController : MonoBehaviour
                 Debug.Log("Lumi golpea a: " + enemy.name);
                 Destroy(enemy.gameObject);
 
-                //SI LE VAN A AGREGAR SONIDO
-                //ServiceLocator.Get<IAudioService>().PlaySound("LumiHit");
+
+                ServiceLocator.Get<IAudioService>().PlaySound("Attack");
             }
         }
     }
@@ -169,8 +169,8 @@ public class LumiController : MonoBehaviour
             GameManager.Instance.GameOver();
         }
 
-        //SI LE VAN A AGREGAR SONIDO
-        //ServiceLocator.Get<IAudioService>().PlaySound("LumiHit");
+
+        ServiceLocator.Get<IAudioService>().PlaySound("Damage");
 
     }
 
@@ -179,8 +179,8 @@ public class LumiController : MonoBehaviour
         currentHealth += amount;
         if (currentHealth > maxHealth) currentHealth = maxHealth;
         NotifyObservers("Life", currentHealth);
-        //SI LE VAN A AGREGAR SONIDO
-        //ServiceLocator.Get<IAudioService>().PlaySound("LumiHit");
+
+        ServiceLocator.Get<IAudioService>().PlaySound("Heart");
 
     }
 
@@ -188,8 +188,8 @@ public class LumiController : MonoBehaviour
     {
         ServiceLocator.Get<IScoreService>().AddPoints();
         NotifyObservers("Fragment", ServiceLocator.Get<IScoreService>().CurrentScore);
-        //SI LE VAN A AGREGAR SONIDO
-        //ServiceLocator.Get<IAudioService>().PlaySound("LumiHit");
+
+        ServiceLocator.Get<IAudioService>().PlaySound("Fragment");
 
     }
 
@@ -199,8 +199,7 @@ public class LumiController : MonoBehaviour
     {
         NotifyObservers("PowerUp", 0, type);
 
-        //SI LE VAN A AGREGAR SONIDO
-        //ServiceLocator.Get<IAudioService>().PlaySound("LumiHit");
+        ServiceLocator.Get<IAudioService>().PlaySound("PowerUp");
 
         if (type == "Star") StartCoroutine(ActivateInvincibility(5f));
         else if (type == "Moon" && moonGuideLine != null)
