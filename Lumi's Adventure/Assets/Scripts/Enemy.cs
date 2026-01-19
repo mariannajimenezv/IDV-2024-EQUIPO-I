@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     
     [Header("Estadisticas del enemigo")]
     
-    public int health = 50;
+    public int health = 5;
     public float sightRange; 
     public float attackRange;
     public float attackCooldown;
@@ -47,7 +47,7 @@ public class Enemy : MonoBehaviour
         if (!inSightRange && !inAttackRange) IdlePatrol();
         if (inSightRange && !inAttackRange) ChasingPlayer();
         if (inSightRange && inAttackRange) Attack();
-
+        if (health < 0) Die();
         //OnDrawGizmosSelected();
         //Patrol();
     }
@@ -143,6 +143,7 @@ public class Enemy : MonoBehaviour
 
     public void Die()
     {
+        
         Destroy(gameObject);
     }
 }
