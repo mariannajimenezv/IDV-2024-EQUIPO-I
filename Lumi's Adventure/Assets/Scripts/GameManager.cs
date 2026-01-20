@@ -120,34 +120,26 @@ public class GameManager : MonoBehaviour, ILumiObserver
         SetPortalActive(true);
     }
 
-    // Controla el estado visual del portal (todos los LODs)
     private void SetPortalActive(bool active)
     {
         if (portalRenderers == null || portalRenderers.Length == 0) return;
 
-        // 1. Definir el color final
-        // Multiplicamos por 5 para que brille (HDR)
         float intensity = active ? 5f : 1f;
         Color targetColor = active ? portalActiveColor * intensity : portalInactiveColor;
 
-        // 2. Recorrer todos los renderers (LOD0, LOD1...)
         foreach (Renderer rend in portalRenderers)
         {
             if (rend == null) continue;
 
-            // 3. ¡IMPORTANTE! Usamos .materials (plural) para coger la Piedra Y el Fluido
-            // Unity crea una copia temporal, por eso guardamos el array, lo modificamos y lo reasignamos (opcional pero recomendado)
             Material[] mats = rend.materials;
 
             foreach (Material mat in mats)
             {
-                // INTENTO 1: Tu propiedad del Shader Graph (_Color)
                 if (mat.HasProperty("_Color"))
                 {
                     mat.SetColor("_Color", targetColor);
                 }
 
-                // INTENTO 2: Forzar Emisión estándar (por si el shader lo soporta)
                 if (mat.HasProperty("_EmissionColor"))
                 {
                     mat.EnableKeyword("_EMISSION");
