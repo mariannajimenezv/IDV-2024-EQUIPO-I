@@ -13,7 +13,7 @@ public interface IFlyweightEnemy
     public void Attack();
     public void ResetAttack();
 
-    //public void OnCollisionEnter(Collision collision);
+    public void OnCollisionEnter(Collision collision);
 
     public void Die();
 }

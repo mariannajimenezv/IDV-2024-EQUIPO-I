@@ -12,12 +12,12 @@ public class FlyweightEnemy
     public float patrolPointRange = 10.0f;
 
     public float patrolTime;
-
     public float maxPatrolTime = 5.0f;
 
     public void Update()
     {
         patrolTime += Time.deltaTime;
+
     }
     public void IdlePatrol(Enemy enemy)
     {
@@ -28,6 +28,11 @@ public class FlyweightEnemy
         Vector3 patrolPointDistance = enemy.transform.position - enemy.patrolPoint;
 
         if(patrolPointDistance.magnitude < 1f) enemy.patrolPointSet = false;
+
+        //animator
+        enemy.animator.SetBool("isPatroling", true);
+        enemy.animator.SetBool("isChasing", false);
+        enemy.animator.SetBool("isAttacking", false);
     }
     public void SetPatrolPoint(Enemy enemy)
     {
@@ -45,22 +50,37 @@ public class FlyweightEnemy
     public void ChasingPlayer(Enemy enemy)
     {
         enemy.agent.SetDestination(enemy.player.position);
+
+        //animator
+        enemy.animator.SetBool("isChasing", true);
+        enemy.animator.SetBool("isPatroling", false);
+        enemy.animator.SetBool("isAttacking", false);
     }
     public void Attack(Enemy enemy)
     {
-        // 2. Lógica de Daño (Hitbox)
-        if(enemy.inAttackRange)
-        {
-            Debug.Log("Enemigo golpea a Lumi ");
-            //LumiController.TakeDamage();
+        if (!enemy.hasAttacked) { 
+            // 2. Lógica de Daño (Hitbox)
+            if(enemy.inAttackRange)
+            {
+                Debug.Log("Enemigo golpea a Lumi ");
+                //LumiController.TakeDamage();
+            }
+            
+            enemy.hasAttacked = true;
+            enemy.Invoke(nameof(ResetAttack), enemy.attackCooldown);
+
+            //animator
+            enemy.animator.SetBool("isAttacking", true);
+            enemy.animator.SetBool("attackOffCooldown", false);
+            enemy.animator.SetBool("isPatroling", false);
+            enemy.animator.SetBool("isChasing", false);
         }
-        
-        enemy.hasAttacked = true;
-        enemy.Invoke(nameof(ResetAttack), enemy.attackCooldown);
     }
     public void ResetAttack(Enemy enemy)
     {
         enemy.hasAttacked = false;
+        //animator
+        enemy.animator.SetBool("attackOffCooldown", true);
     }
     
     public void OnCollisionEnter(Collision collision, Enemy enemy)
@@ -85,6 +105,10 @@ public class FlyweightEnemy
     }
     public void Die(Enemy enemy)
     {
+        //animator
+        enemy.animator.SetBool("isDead", true);
+        enemy.patrolPoint = enemy.transform.position;
+        enemy.isDead = true;
         enemy.Die();
     }
 }

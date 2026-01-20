@@ -11,7 +11,9 @@ public class Enemy : MonoBehaviour, IFlyweightEnemy
     public Vector3 patrolPoint;                 
     public bool patrolPointSet;                        
     public bool inSightRange, inAttackRange;
-    public float sightRange = 5.0f;
+    
+    public bool isDead = false;
+    public float deadTime = 0f;
 
     public Transform player;
 
@@ -20,34 +22,30 @@ public class Enemy : MonoBehaviour, IFlyweightEnemy
     public LayerMask Ground, Player;
 
     private FlyweightEnemy fwEnemy;
-    /*
-    public void Awake()
-    {
-        fwEnemy.Awake(this);
-    }*/
+
+    public Animator animator;
+
 
     public void Awake()
     {
         player = GameObject.Find("Lumi").transform;
         agent = GetComponent<NavMeshAgent>();
         fwEnemy = new FlyweightEnemy();
+        animator = GetComponent<Animator>();
     }
-    /*
-    public void Update()
-    {
-        fwEnemy.Update(this);
-    }
-    */
     public void Update()
     {
         //Definición del rango de vision y ataque del enemigo
-        inSightRange = Physics.CheckSphere(transform.position, sightRange, Player);
+        inSightRange = Physics.CheckSphere(transform.position, fwEnemy.sightRange, Player);
         inAttackRange = Physics.CheckSphere(transform.position, attackRange, Player);
 
-        if (!inSightRange && !inAttackRange) IdlePatrol();
-        if (inSightRange && !inAttackRange) ChasingPlayer();
-        if (inSightRange && inAttackRange) Attack();
-        if (health < 0) Die();
+        Vector3 distanceToPlayer = transform.position - player.position;
+
+
+        if (!inSightRange && !inAttackRange && !isDead) IdlePatrol();
+        if (inSightRange && !inAttackRange && distanceToPlayer.magnitude > 0.5f && !isDead) ChasingPlayer();
+        if (inSightRange && inAttackRange && !hasAttacked && !isDead) Attack();
+        if (health < 0 || isDead) { deadTime += Time.deltaTime; Die(); }
 
         fwEnemy.Update();
     }
@@ -80,6 +78,7 @@ public class Enemy : MonoBehaviour, IFlyweightEnemy
     }
     public void Die()
     {
+        //if (deadTime < 1.5f) return;
         Destroy(gameObject);
     }
 }
