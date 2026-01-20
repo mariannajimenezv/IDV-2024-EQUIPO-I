@@ -18,13 +18,10 @@ public class BadEnemy : MonoBehaviour
     public float attackRange;
     public float attackCooldown;
 
-    //public float speed = 3f;
     public int damage = 1;
     public bool hasAttacked;
 
     [Header("Ruta de Patrulla")]
-    //public Transform[] patrolPoints;
-    //private int currentPointIndex = 0;
     public Vector3 patrolPoint;
     bool patrolPointSet;
     public float patrolPointRange;
@@ -40,16 +37,14 @@ public class BadEnemy : MonoBehaviour
 
     private void Update()
     {
-        //Definición del rango de vision y ataque del enemigo
+        // Definicion del rango de vision y ataque del enemigo
         inSightRange = Physics.CheckSphere(transform.position, sightRange, Player);
         inAttackRange = Physics.CheckSphere(transform.position, attackRange, Player);
 
         if (!inSightRange && !inAttackRange) IdlePatrol();
         if (inSightRange && !inAttackRange) ChasingPlayer();
         if (inSightRange && inAttackRange) Attack();
-        if (health < 0) Die();
-        //OnDrawGizmosSelected();
-        //Patrol();
+        if (health < 0) Die();;
     }
 
 
@@ -70,7 +65,7 @@ public class BadEnemy : MonoBehaviour
 
         patrolPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
-        // Comprobación que el punto de destino este en el mapa
+        // Comprobacion que el punto de destino este en el mapa
         if(Physics.Raycast(patrolPoint, -transform.up, 2f, Ground)) patrolPointSet = true;
     }
 
@@ -80,11 +75,9 @@ public class BadEnemy : MonoBehaviour
     }
     private void Attack()
     {
-        // 2. Lógica de Daño (Hitbox)
         if(inAttackRange)
         {
             Debug.Log("Enemigo golpea a Lumi ");
-            //LumiController.TakeDamage();
         }
         
         hasAttacked = true;
@@ -102,23 +95,6 @@ public class BadEnemy : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
     }
-
-    /*
-    void Patrol()
-    {
-        if (patrolPoints.Length == 0) return;
-
-        Transform target = patrolPoints[currentPointIndex];
-
-        transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-
-        transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
-
-        if (Vector3.Distance(transform.position, target.position) < 0.2f)
-        {
-            currentPointIndex = (currentPointIndex + 1) % patrolPoints.Length;
-        }
-    }*/
 
     private void OnCollisionEnter(Collision collision)
     {

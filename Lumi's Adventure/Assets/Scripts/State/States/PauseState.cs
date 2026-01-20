@@ -39,7 +39,7 @@ public class PauseState : AMenuState
         
     }
 
-    // BUTTON METHODS USED IN PAUSE MENU //
+    // ---- METODOS DE BOTONES UTILIZADOS EN EL PAUSE MENU ----
     public override void OnBack()
     {
         Time.timeScale = 1; 

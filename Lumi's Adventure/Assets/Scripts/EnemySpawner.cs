@@ -12,7 +12,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Awake()
     {
-        enemyType = Random.Range(0, 2); // 0: Mushroom, 1: Cactus
+        enemyType = Random.Range(0, 2); // 0: Seta, 1: Cactus
 
         if (enemyType == 0)
         {

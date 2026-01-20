@@ -12,7 +12,7 @@ public class VictoryState : AMenuState
         panel = menu.GetPanel("VictoryState");
     }
 
-    // State properties and transitions
+    // Propiedades y transiciones de estado
     public override void Enter()
     {
         if (panel != null) panel.SetActive(true);
@@ -21,7 +21,7 @@ public class VictoryState : AMenuState
 
     public override void Exit()
     {
-        // The State Machine "dies" here so its not neccesary to do anything
+        // La maquina de estados "muere" aqui, por lo que no es necesario hacer nada
     }
 
     public override void Update()

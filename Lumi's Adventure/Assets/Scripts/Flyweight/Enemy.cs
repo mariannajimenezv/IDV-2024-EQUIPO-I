@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour, IFlyweightEnemy
     }
     public void Update()
     {
-        //Definición del rango de vision y ataque del enemigo
+        //Definicion del rango de vision y ataque del enemigo
         inSightRange = Physics.CheckSphere(transform.position, fwEnemy.sightRange, Player);
         inAttackRange = Physics.CheckSphere(transform.position, attackRange, Player);
 
@@ -78,7 +78,6 @@ public class Enemy : MonoBehaviour, IFlyweightEnemy
     }
     public void Die()
     {
-        //if (deadTime < 1.5f) return;
         Destroy(gameObject);
     }
 }

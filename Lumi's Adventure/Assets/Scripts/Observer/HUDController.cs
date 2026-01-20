@@ -20,9 +20,9 @@ public class HUDController : MonoBehaviour, ILumiObserver
     {
         if(lumi != null)
         {
-            lumi.AddObserver(this); // patron observer
+            lumi.AddObserver(this); // Patron observer
 
-            // estados iniciales de Lumi
+            // Estados iniciales de Lumi
             OnLifeChange(lumi.currentHealth);
             OnFragmentCount(0);
         }
@@ -30,18 +30,16 @@ public class HUDController : MonoBehaviour, ILumiObserver
 
     void OnDestroy()
     {
-        if (lumi != null) lumi.RemoveObserver(this);    // patron observer
+        if (lumi != null) lumi.RemoveObserver(this);    // Patron observer
     }
 
     public void OnLifeChange(int value)
     {
-        // Debug
         if (livesText != null)
             livesText.text = "Vidas: " + value;
         
-        // Health Bar Animation
         int spriteIndex = Mathf.CeilToInt((10 - value) / 2f);
-        // Clamp to avoid going out of bounds
+
         spriteIndex = Mathf.Clamp(spriteIndex, 0, lifeBarSprites.Length - 1);
         lifeBar.sprite = lifeBarSprites[spriteIndex];
     }

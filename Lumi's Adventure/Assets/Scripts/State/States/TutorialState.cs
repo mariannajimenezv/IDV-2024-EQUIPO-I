@@ -1,9 +1,5 @@
 using UnityEngine;
 
-/// <summary>
-/// State for Tutorial Menu. Shows player
-/// basic controls for Lumi
-/// </summary>
 public class TutorialState : AMenuState
 {
     private readonly GameObject panel;
@@ -15,7 +11,7 @@ public class TutorialState : AMenuState
         panel = menu.GetPanel("TutorialState");
     }
 
-    // State properties and transitions
+    // Propiedades y transiciones de estado
     public override void Enter()
     {
         Debug.Log("Entering Tutorial Menu");
@@ -41,7 +37,7 @@ public class TutorialState : AMenuState
 
     }
 
-    // BUTTON METHODS USED IN TUTORIAL MENU //
+    // ---- METODOS DE BOTONES UTILIZADOS EN EL TUTORIAL MENU ----
     public override void OnBack()
     {
         menu.SetState(new MainMenuState(menu));

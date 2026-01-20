@@ -17,7 +17,7 @@ public class MainMenuState : AMenuState
         background = menu.GetPanel("MainMenuBg");
     }
 
-    // State properties and transitions
+    // Propiedades y transiciones de estado
     public override void Enter()
     {
         if (panel != null) panel.SetActive(true);
@@ -41,7 +41,7 @@ public class MainMenuState : AMenuState
         
     }
 
-    // BUTTON METHODS USED IN MAIN MENU //
+    // ---- METODOS DE BOTONES UTILIZADOS EN EL MAIN MENU ----
     public override void OnPlay()
     {
         menu.SetState(new StartGameState(menu));

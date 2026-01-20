@@ -29,7 +29,7 @@ public class FlyweightEnemy
 
         if(patrolPointDistance.magnitude < 1f) enemy.patrolPointSet = false;
 
-        //animator
+        // animator
         enemy.animator.SetBool("isPatroling", true);
         enemy.animator.SetBool("isChasing", false);
         enemy.animator.SetBool("isAttacking", false);
@@ -41,7 +41,7 @@ public class FlyweightEnemy
 
         enemy.patrolPoint = new Vector3(enemy.transform.position.x + randomX, enemy.transform.position.y, enemy.transform.position.z + randomZ);
 
-        // Comprobación que el punto de destino este en el mapa
+        // comprobacion que el punto de destino este en el mapa
         if(Physics.Raycast(enemy.patrolPoint, -enemy.transform.up, 2f, enemy.Ground)) enemy.patrolPointSet = true;
 
         patrolTime = 0f;
@@ -59,11 +59,9 @@ public class FlyweightEnemy
     public void Attack(Enemy enemy)
     {
         if (!enemy.hasAttacked) { 
-            // 2. Lógica de Daño (Hitbox)
             if(enemy.inAttackRange)
             {
                 Debug.Log("Enemigo golpea a Lumi ");
-                //LumiController.TakeDamage();
             }
             
             enemy.hasAttacked = true;

@@ -3,10 +3,6 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-/// <summary>
-/// State for Start Game Menu. When pressing PLay on Main
-/// Menu, this state serves as context for the game lore.
-/// </summary>
 public class StartGameState : AMenuState
 {
     private readonly GameObject panel;
@@ -20,7 +16,7 @@ public class StartGameState : AMenuState
         panel = menu.GetPanel("GameStartState");
     }
 
-    // State properties and transitions
+    // Propiedades y transiciones de estado
     public override void Enter()
     {
         if (panel != null) panel.SetActive(true);
@@ -35,7 +31,7 @@ public class StartGameState : AMenuState
 
     public override void Exit()
     {
-        // The State Machine "dies" here so its not neccesary to do anything
+        // La maquina de estados "muere" aqui, por lo que no es necesario hacer nada
     }
 
     public override void Update()
@@ -48,7 +44,7 @@ public class StartGameState : AMenuState
         
     }
 
-    // BUTTON METHODS USED IN START GAME MENU //
+    // ---- METODOS DE BOTONES UTILIZADOS EN EL START GAME MENU ----
     public override void OnStartGame()
     {
         if(frameCount < frames.Count() - 1)

@@ -11,7 +11,7 @@ public class GameState : AMenuState
         panel = menu.GetPanel("GameState");
     }
 
-    // State properties and transitions
+    // Propiedades y transiciones de estado
     public override void Enter()
     {
         if (panel != null) panel.SetActive(true);

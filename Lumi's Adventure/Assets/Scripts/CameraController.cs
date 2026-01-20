@@ -8,7 +8,7 @@ public class CameraController : MonoBehaviour
     [Header("Configuración")]
     [Range(0.01f, 1f)]
     public float smoothSpeed = 0.125f; 
-    public Vector3 offset; // La distancia entre la cámara y el jugador
+    public Vector3 offset;
 
     void Start()
     {
@@ -23,16 +23,12 @@ public class CameraController : MonoBehaviour
     {
         if (target == null) return;
 
-        // Calculamos dónde debería estar la cámara
         Vector3 desiredPosition = target.position + offset;
 
-        // Nos movemos suavemente hacia esa posición e interpola
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
 
-        // Aplicamos la posición
         transform.position = smoothedPosition;
 
-        // Siempre mira al jugador
         transform.LookAt(target); 
     }
 }

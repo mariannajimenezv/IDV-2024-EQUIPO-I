@@ -1,8 +1,5 @@
 using UnityEngine;
 
-/// <summary>
-/// State for Credits Menu. Accessed through Main Menu
-/// </summary>
 public class CreditsState : AMenuState
 {
     private readonly GameObject panel;
@@ -14,7 +11,7 @@ public class CreditsState : AMenuState
         panel = menu.GetPanel("CreditsMenuState");
     }
 
-    // State properties and transitions
+    // Propiedades y transiciones de estado
     public override void Enter()
     {
         Debug.Log("Entering Credits Menu");
@@ -40,7 +37,7 @@ public class CreditsState : AMenuState
 
     }
 
-    // BUTTON METHODS USED IN CREDITS MENU //
+    // ---- METODOS DE BOTONES UTILIZADOS EN EL MENU DE CREDITOS ----
     public override void OnBack()
     {
         menu.SetState(new MainMenuState(menu));

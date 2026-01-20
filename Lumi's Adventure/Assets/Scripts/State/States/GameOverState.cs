@@ -12,7 +12,7 @@ public class GameOverState : AMenuState
         panel = menu.GetPanel("GameOverState");
     }
 
-    // State properties and transitions
+    // Propiedades y transiciones de estado
     public override void Enter()
     {
         if (panel != null) panel.SetActive(true);
@@ -21,7 +21,7 @@ public class GameOverState : AMenuState
 
     public override void Exit()
     {
-        // The State Machine "dies" here so its not neccesary to do anything
+        // La maquina de estados "muere" aqui, por lo que no es necesario hacer nada
     }
 
     public override void Update()
@@ -34,7 +34,7 @@ public class GameOverState : AMenuState
         
     }
 
-    // BUTTON METHODS USED IN GAME OVER MENU //
+    // ---- METODOS DE BOTONES UTILIZADOS EN EL MENU GAME OVER ----
     public override void OnBack()
     {
         Time.timeScale = 1;
