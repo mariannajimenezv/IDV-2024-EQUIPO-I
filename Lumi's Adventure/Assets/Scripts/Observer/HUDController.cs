@@ -10,7 +10,10 @@ public class HUDController : MonoBehaviour, ILumiObserver
     [Header("UI Elements")]
     public TMP_Text livesText;      
     public TMP_Text fragmentsText;  
-    public TMP_Text powerUpMsg;    
+    public TMP_Text powerUpMsg;
+    public TMP_Text fragmentMsg;
+    public GameObject fragmentMsgImage;
+
 
     [Header("UI Elements")]
     public Image lifeBar;    
@@ -47,10 +50,16 @@ public class HUDController : MonoBehaviour, ILumiObserver
     public void OnFragmentCount(int value)
     {
         if (fragmentsText != null)
-            fragmentsText.text = "Fragmentos: " + value;
+            fragmentsText.text = "Fragments: " + value;
+
+        if (fragmentMsg != null && value == 10)
+        {
+            fragmentMsg.text = "You got them! Now climb to the exit";
+            fragmentMsgImage.SetActive(true);
+        }
     }
 
-    public void OnPowerUp(string value)
+        public void OnPowerUp(string value)
     {
         if (powerUpMsg != null)
         {
