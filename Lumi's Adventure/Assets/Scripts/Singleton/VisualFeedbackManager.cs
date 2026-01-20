@@ -24,6 +24,8 @@ public class VisualFeedbackManager : MonoBehaviour
         }
     }
 
+    private Dictionary<Renderer, Color> originalColors = new Dictionary<Renderer, Color>();
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -36,10 +38,32 @@ public class VisualFeedbackManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    private void CacheOriginalColor(Renderer rend)
+    {
+        if (!originalColors.ContainsKey(rend))
+        {
+            originalColors[rend] = rend.material.color;
+        }
+    }
+
+    private Color GetOriginalColor(Renderer rend)
+    {
+        if (originalColors.ContainsKey(rend))
+        {
+            return originalColors[rend];
+        }
+        return rend.material.color;
+    }
+
     public void ShowInvincibilityFeedback(GameObject target, float duration)
     {
         Renderer[] renderers = target.GetComponentsInChildren<Renderer>();
         if (renderers.Length == 0) return;
+
+        foreach (Renderer rend in renderers)
+        {
+            CacheOriginalColor(rend);
+        }
 
         ParticleSystem particles = target.GetComponentInChildren<ParticleSystem>();
         StartCoroutine(InvincibilityEffect(renderers, particles, duration));
@@ -50,6 +74,10 @@ public class VisualFeedbackManager : MonoBehaviour
         Renderer[] renderers = target.GetComponentsInChildren<Renderer>();
         if (renderers.Length > 0)
         {
+            foreach (Renderer rend in renderers)
+            {
+                CacheOriginalColor(rend);
+            }
             StartCoroutine(SpeedBoostEffect(renderers, duration));
         }
     }
@@ -59,6 +87,10 @@ public class VisualFeedbackManager : MonoBehaviour
         Renderer[] renderers = target.GetComponentsInChildren<Renderer>();
         if (renderers.Length > 0)
         {
+            foreach (Renderer rend in renderers)
+            {
+                CacheOriginalColor(rend);
+            }
             StartCoroutine(DamageEffect(renderers));
         }
     }
@@ -68,6 +100,10 @@ public class VisualFeedbackManager : MonoBehaviour
         Renderer[] renderers = target.GetComponentsInChildren<Renderer>();
         if (renderers.Length > 0)
         {
+            foreach (Renderer rend in renderers)
+            {
+                CacheOriginalColor(rend);
+            }
             StartCoroutine(HealEffect(renderers));
         }
     }
@@ -76,12 +112,6 @@ public class VisualFeedbackManager : MonoBehaviour
 
     private IEnumerator InvincibilityEffect(Renderer[] renderers, ParticleSystem particles, float duration)
     {
-        Color[] originalColors = new Color[renderers.Length];
-        for (int i = 0; i < renderers.Length; i++)
-        {
-            originalColors[i] = renderers[i].material.color;
-        }
-
         float blinkSpeed = 0.15f;
         float elapsed = 0f;
 
@@ -98,9 +128,9 @@ public class VisualFeedbackManager : MonoBehaviour
             }
             yield return new WaitForSeconds(blinkSpeed);
 
-            for (int i = 0; i < renderers.Length; i++)
+            foreach (Renderer rend in renderers)
             {
-                renderers[i].material.color = originalColors[i];
+                rend.material.color = GetOriginalColor(rend);
             }
             yield return new WaitForSeconds(blinkSpeed);
 
@@ -109,20 +139,14 @@ public class VisualFeedbackManager : MonoBehaviour
 
         if (particles != null) particles.Stop();
 
-        for (int i = 0; i < renderers.Length; i++)
+        foreach (Renderer rend in renderers)
         {
-            renderers[i].material.color = originalColors[i];
+            rend.material.color = GetOriginalColor(rend);
         }
     }
 
     private IEnumerator SpeedBoostEffect(Renderer[] renderers, float duration)
     {
-        Color[] originalColors = new Color[renderers.Length];
-        for (int i = 0; i < renderers.Length; i++)
-        {
-            originalColors[i] = renderers[i].material.color;
-        }
-
         Color speedColor = new Color(0f, 1.5f, 2f, 1f);
         float elapsed = 0f;
         float blinkSpeed = 0.2f;
@@ -135,29 +159,23 @@ public class VisualFeedbackManager : MonoBehaviour
             }
             yield return new WaitForSeconds(blinkSpeed);
 
-            for (int i = 0; i < renderers.Length; i++)
+            foreach (Renderer rend in renderers)
             {
-                renderers[i].material.color = originalColors[i];
+                rend.material.color = GetOriginalColor(rend);
             }
             yield return new WaitForSeconds(blinkSpeed);
 
             elapsed += blinkSpeed * 2;
         }
 
-        for (int i = 0; i < renderers.Length; i++)
+        foreach (Renderer rend in renderers)
         {
-            renderers[i].material.color = originalColors[i];
+            rend.material.color = GetOriginalColor(rend);
         }
     }
 
     private IEnumerator DamageEffect(Renderer[] renderers)
     {
-        Color[] originalColors = new Color[renderers.Length];
-        for (int i = 0; i < renderers.Length; i++)
-        {
-            originalColors[i] = renderers[i].material.color;
-        }
-
         Color damageColor = new Color(2f, 0f, 0f, 1f);
 
         for (int flash = 0; flash < 3; flash++)
@@ -168,27 +186,21 @@ public class VisualFeedbackManager : MonoBehaviour
             }
             yield return new WaitForSeconds(0.1f);
 
-            for (int i = 0; i < renderers.Length; i++)
+            foreach (Renderer rend in renderers)
             {
-                renderers[i].material.color = originalColors[i];
+                rend.material.color = GetOriginalColor(rend);
             }
             yield return new WaitForSeconds(0.1f);
         }
 
-        for (int i = 0; i < renderers.Length; i++)
+        foreach (Renderer rend in renderers)
         {
-            renderers[i].material.color = originalColors[i];
+            rend.material.color = GetOriginalColor(rend);
         }
     }
 
     private IEnumerator HealEffect(Renderer[] renderers)
     {
-        Color[] originalColors = new Color[renderers.Length];
-        for (int i = 0; i < renderers.Length; i++)
-        {
-            originalColors[i] = renderers[i].material.color;
-        }
-
         Color healColor = new Color(0f, 2f, 0f, 1f);
 
         for (int flash = 0; flash < 2; flash++)
@@ -199,16 +211,16 @@ public class VisualFeedbackManager : MonoBehaviour
             }
             yield return new WaitForSeconds(0.15f);
 
-            for (int i = 0; i < renderers.Length; i++)
+            foreach (Renderer rend in renderers)
             {
-                renderers[i].material.color = originalColors[i];
+                rend.material.color = GetOriginalColor(rend);
             }
             yield return new WaitForSeconds(0.15f);
         }
 
-        for (int i = 0; i < renderers.Length; i++)
+        foreach (Renderer rend in renderers)
         {
-            renderers[i].material.color = originalColors[i];
+            rend.material.color = GetOriginalColor(rend);
         }
     }
 }

@@ -4,18 +4,18 @@ using System.Collections.Generic;
 
 public class LumiController : MonoBehaviour
 {
-    [Header("Configuraci�n de Movimiento")]
+    [Header("Configuración de Movimiento")]
     public float walkSpeed = 5f;
     public float runSpeed = 10f;
     public float jumpForce = 7f;
-    public float gravityMultiplier = 2.5f; 
+    public float gravityMultiplier = 2.5f;
 
-    [Header("F�sicas y Referencias")]
+    [Header("Físicas y Referencias")]
     public LayerMask groundLayer;
     public Transform groundCheck;
 
     private Rigidbody rb;
-    private Animator anim; 
+    private Animator anim;
     private bool isGrounded;
     private float currentSpeed;
 
@@ -33,9 +33,7 @@ public class LumiController : MonoBehaviour
 
     [Header("Power Ups")]
     public bool isInvincible = false;
-    public float iFramesDuration = 1f;
     private LineRenderer moonGuideLine;
-    private Coroutine iFramesCoroutine;
 
     private void Awake()
     {
@@ -70,7 +68,6 @@ public class LumiController : MonoBehaviour
     }
 
     // --- METODOS DEL COMMAND PATTERN  ---
-
 
     public void Move(Vector3 direction)
     {
@@ -108,7 +105,6 @@ public class LumiController : MonoBehaviour
             {
                 anim.SetTrigger("Jump");
             }
-
         }
     }
 
@@ -150,15 +146,9 @@ public class LumiController : MonoBehaviour
         currentHealth -= damage;
         NotifyObservers("Life", currentHealth);
 
-        VisualFeedbackManager.Instance.ShowDamageFeedback(gameObject);    // Feedback visual (singleton)
+        VisualFeedbackManager.Instance.ShowDamageFeedback(gameObject);
 
-        if (iFramesCoroutine != null)
-        {
-            StopCoroutine(iFramesCoroutine);
-        }
-        iFramesCoroutine = StartCoroutine(ActivateIFrames(iFramesDuration));
-
-        ServiceLocator.Get<IAudioService>().PlaySound("Damage");    // Sonido
+        ServiceLocator.Get<IAudioService>().PlaySound("Damage");
 
         if (currentHealth <= 0)
         {
@@ -172,7 +162,7 @@ public class LumiController : MonoBehaviour
         if (currentHealth > maxHealth) currentHealth = maxHealth;
         NotifyObservers("Life", currentHealth);
 
-        VisualFeedbackManager.Instance.ShowHealFeedback(gameObject);    // Feedback visual (singleton)
+        VisualFeedbackManager.Instance.ShowHealFeedback(gameObject);
         ServiceLocator.Get<IAudioService>().PlaySound("Heart");
     }
 
@@ -180,7 +170,7 @@ public class LumiController : MonoBehaviour
     {
         ServiceLocator.Get<IScoreService>().AddPoints();
         ServiceLocator.Get<IFragmentService>().UnregisterFragment(fragment);
-        if(moonGuideLine != null) moonGuideLine.enabled = false;
+        if (moonGuideLine != null) moonGuideLine.enabled = false;
         NotifyObservers("Fragment", ServiceLocator.Get<IScoreService>().CurrentScore);
 
         ServiceLocator.Get<IAudioService>().PlaySound("Fragment");
@@ -209,9 +199,9 @@ public class LumiController : MonoBehaviour
     public IEnumerator ActivateInvincibility(float duration)
     {
         isInvincible = true;
-        Debug.Log("�Lumi Invencible!");
+        Debug.Log("¡Lumi Invencible!");
 
-        VisualFeedbackManager.Instance.ShowInvincibilityFeedback(gameObject, duration);    // Feedback visual (singleton)
+        VisualFeedbackManager.Instance.ShowInvincibilityFeedback(gameObject, duration);
 
         yield return new WaitForSeconds(duration);
         isInvincible = false;
@@ -222,7 +212,7 @@ public class LumiController : MonoBehaviour
     {
         currentSpeed = boostedSpeed;
 
-        VisualFeedbackManager.Instance.ShowSpeedBoostFeedback(gameObject, duration);    // Feedback visual (singleton)
+        VisualFeedbackManager.Instance.ShowSpeedBoostFeedback(gameObject, duration);
 
         yield return new WaitForSeconds(duration);
         currentSpeed = walkSpeed;
@@ -255,18 +245,6 @@ public class LumiController : MonoBehaviour
         }
 
         moonGuideLine.enabled = false;
-    }
-
-    private IEnumerator ActivateIFrames(float duration)
-    {
-        isInvincible = true;
-        Debug.Log($"i-frames activados por {duration} segundos");
-
-        yield return new WaitForSeconds(duration);
-
-        isInvincible = false;
-        Debug.Log("i-frames terminados");
-        iFramesCoroutine = null;
     }
 
     // --- PATRON OBSERVER ---
