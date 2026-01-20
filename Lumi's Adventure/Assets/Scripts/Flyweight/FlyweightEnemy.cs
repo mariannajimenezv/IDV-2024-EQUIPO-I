@@ -72,8 +72,6 @@ public class FlyweightEnemy
             //animator
             enemy.animator.SetBool("isAttacking", true);
             enemy.animator.SetBool("attackOffCooldown", false);
-            enemy.animator.SetBool("isPatroling", false);
-            enemy.animator.SetBool("isChasing", false);
         }
     }
     public void ResetAttack(Enemy enemy)
