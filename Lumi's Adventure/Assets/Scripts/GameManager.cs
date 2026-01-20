@@ -11,36 +11,41 @@ public class GameManager : MonoBehaviour, ILumiObserver
     [Header("Configuracion del Nivel")]
     public int totalFragments = 10;
     public int currentFragments = 0;
-
     public GameObject exitDoor;
     public Transform[] fragSpawnPoints;
     public Transform[] powerSpawnPoints;
 
     [Header("Portal de Salida")]
-    public Renderer portalRenderer; // Renderer con el shader verde
-    public Collider portalCollider; // Collider del portal (opcional)
-    public Color portalActiveColor = new Color(0f, 1f, 0f, 1f); // Verde brillante
-    public Color portalInactiveColor = new Color(0f, 0f, 0f, 1f); // Negro (apagado)
+    public GameObject portalObject; // El GameObject completo del portal
+    public Collider portalCollider;
+    public Color portalActiveColor = new Color(0f, 5f, 0f, 1f);
+    public Color portalInactiveColor = new Color(0f, 0f, 0f, 1f);
 
+    private Renderer[] portalRenderers; // Array para todos los renderers (LOD0 y LOD1)
     private bool portalUnlocked = false;
 
     private void Awake()
     {
-        if (Instance == null) Instance = this; //singleton
+        if (Instance == null) Instance = this;
         else Destroy(gameObject);
     }
 
     private void Start()
     {
-        // Inicio salida bloqueada
         if (exitDoor != null) exitDoor.SetActive(false);
 
-        // Apagar portal al inicio
+        // Obtener TODOS los renderers del portal (incluye LOD0 y LOD1)
+        if (portalObject != null)
+        {
+            portalRenderers = portalObject.GetComponentsInChildren<Renderer>();
+            Debug.Log($"Portal: encontrados {portalRenderers.Length} renderers");
+        }
+
         SetPortalActive(false);
 
         if (lumi != null)
         {
-            lumi.AddObserver(this); // patron observer
+            lumi.AddObserver(this);
         }
         else
         {
@@ -76,7 +81,7 @@ public class GameManager : MonoBehaviour, ILumiObserver
     {
         if (lumi != null)
         {
-            lumi.RemoveObserver(this); // patron observer
+            lumi.RemoveObserver(this);
         }
     }
 
@@ -85,7 +90,6 @@ public class GameManager : MonoBehaviour, ILumiObserver
         currentFragments = value;
         Debug.Log($"[OBSERVER] Fragmentos: {currentFragments}/{totalFragments}");
 
-        // logica de victoria
         if (currentFragments >= totalFragments && !portalUnlocked)
         {
             UnlockExit();
@@ -95,8 +99,7 @@ public class GameManager : MonoBehaviour, ILumiObserver
     public void OnLifeChange(int value)
     {
         Debug.Log("[OBSERVER] Vida restante:" + value);
-
-        if(value <= 0)
+        if (value <= 0)
         {
             GameOver();
         }
@@ -114,38 +117,48 @@ public class GameManager : MonoBehaviour, ILumiObserver
 
         if (exitDoor != null) exitDoor.SetActive(true);
 
-        // ACTIVAR PORTAL (SHADER VERDE)
         SetPortalActive(true);
     }
 
-    // Controla el estado visual del portal
+    // Controla el estado visual del portal (todos los LODs)
     private void SetPortalActive(bool active)
     {
-        if (portalRenderer != null)
+        if (portalRenderers == null || portalRenderers.Length == 0) return;
+
+        // 1. Definir el color final
+        // Multiplicamos por 5 para que brille (HDR)
+        float intensity = active ? 5f : 1f;
+        Color targetColor = active ? portalActiveColor * intensity : portalInactiveColor;
+
+        // 2. Recorrer todos los renderers (LOD0, LOD1...)
+        foreach (Renderer rend in portalRenderers)
         {
-            // Cambiar color del shader
-            Color targetColor = active ? portalActiveColor : portalInactiveColor;
+            if (rend == null) continue;
 
-            if (portalRenderer.material.HasProperty("_Color"))
-            {
-                portalRenderer.material.SetColor("_Color", targetColor);
-            }
-            else if (portalRenderer.material.HasProperty("Color"))
-            {
-                portalRenderer.material.SetColor("Color", targetColor);
-            }
+            // 3. ¡IMPORTANTE! Usamos .materials (plural) para coger la Piedra Y el Fluido
+            // Unity crea una copia temporal, por eso guardamos el array, lo modificamos y lo reasignamos (opcional pero recomendado)
+            Material[] mats = rend.materials;
 
-            Debug.Log($"Portal color cambiado a: {(active ? "Verde (activo)" : "Negro (inactivo)")}");
+            foreach (Material mat in mats)
+            {
+                // INTENTO 1: Tu propiedad del Shader Graph (_Color)
+                if (mat.HasProperty("_Color"))
+                {
+                    mat.SetColor("_Color", targetColor);
+                }
+
+                // INTENTO 2: Forzar Emisión estándar (por si el shader lo soporta)
+                if (mat.HasProperty("_EmissionColor"))
+                {
+                    mat.EnableKeyword("_EMISSION");
+                    mat.SetColor("_EmissionColor", targetColor);
+                }
+            }
         }
 
-        // Activar/desactivar collider para evitar que entren antes de tiempo
-        if (portalCollider != null)
-        {
-            portalCollider.enabled = active;
-        }
+        Debug.Log($"Portal actualizado a: {(active ? "ACTIVO (Verde Brillante)" : "INACTIVO (Negro)")}");
     }
 
-    // Llamar cuando el jugador entra al portal
     public void OnPlayerEnterPortal()
     {
         if (!portalUnlocked)
@@ -160,9 +173,7 @@ public class GameManager : MonoBehaviour, ILumiObserver
     public void GameOver()
     {
         Debug.Log("GAME OVER");
-
         ServiceLocator.Get<IAudioService>().PlaySound("GameOver");
-
         if (MenuManager.Instance != null)
         {
             MenuManager.Instance.SetState(new GameOverState(MenuManager.Instance));
@@ -172,9 +183,7 @@ public class GameManager : MonoBehaviour, ILumiObserver
     public void WinLevel()
     {
         Debug.Log("NIVEL COMPLETADO!!");
-
         ServiceLocator.Get<IAudioService>().PlaySound("Victory");
-
         if (MenuManager.Instance != null)
         {
             MenuManager.Instance.SetState(new VictoryState(MenuManager.Instance));
